@@ -41,7 +41,7 @@ refs.searchForm.addEventListener('submit', (e) => {
   }
 
 
-  refs.loader.style.display = 'display: inline-block';
+  refs.loader.style.display = 'inline-block';
 
   searchImages(userValue).then(res => {
     refs.loader.style.display = 'none';
@@ -59,17 +59,32 @@ refs.searchForm.addEventListener('submit', (e) => {
         overlayColor: '#EF4040',
         theme: "dark",
       });
+    } else {
+      renderGallery(img, refs.gallery);
+      e.target.reset();
     }
 
 
 
-    renderGallery(img, refs.gallery);
 
-  }).catch((err) => { console.log(err); }
+
+  }).catch((err) => {
+    iziToast.error({
+      title: 'Error',
+      titleColor: 'white',
+      messageColor: 'white',
+      message: `Sorry, unexpected ${err} occured!`,
+      position: 'topRight',
+      backgroundColor: '#EF4040',
+      iconColor: 'white',
+      overlayColor: '#EF4040',
+      theme: "dark",
+    });
+  }
   );
 
 
-  e.target.reset();
+
 }
 )
 
