@@ -69,6 +69,7 @@ refs.searchForm.addEventListener('submit', (e) => {
 
 
   }).catch((err) => {
+    refs.loader.style.display = 'none';
     iziToast.error({
       title: 'Error',
       titleColor: 'white',
